@@ -6,12 +6,15 @@ const app= express();
 // Connect to mongo DB
 connectDB();
 
+//initialize middleware
+app.use(express.json({extended: false}));
+
 app.get('/',  (req ,res) => res.json({msg: 'Welcome to be-youtiful-nales API...'}));
 
 //define routes
-app.use('/api/clients' , require('./routes/clients'));
+app.use('/api/clients' , require('./routes/client'));
 app.use('/api/auth' , require('./routes/auth'));
-app.use('/api/bookings' , require('./routes/bookings'));
+app.use('/api/bookings' , require('./routes/booking'));
 
 const PORT = process.env.PORT || 5000;
 
