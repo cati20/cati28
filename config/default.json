@@ -1,4 +1,4 @@
 {
-    "mongoURI" : "mongodb+srv://milton:vertex@1028@be-youtiful-nails-owp22.mongodb.net/test?retryWrites=true&w=majority",
+    "mongoURI" : "mongodb+srv://admin:h0IxazwM16l2U8xR@cluster0-icwtt.mongodb.net/test?retryWrites=true&w=majority",
     "jwtsecret" : "secret"
 }

@@ -60,15 +60,61 @@ async (req, res) =>{
 // @route       PUT api/bookings/:id
 // @ desc       Update bookings
 // @access      Private
-router.put('/:id', (req, res) =>{
-    res.send('Update bookings');
+router.put('/:id',auth ,async (req, res) =>{
+    const {name,surname, cellphone, booking, style, } = req.body;
+    
+    //build booking object
+    const bookingFields = {}
+    if(name) bookingFields.name = name;
+    if(surname) bookingFields.surname = surname;
+    if(cellphone) bookingFields.cellphone = cellphone;
+    if(booking) bookingFields.booking = booking;
+    if(style) bookingFields.style = style;
+
+    try {
+        let book = await Booking.findById(req.params.id);
+        if(!book) return res.status(404).json({mssg:'booking not found'});
+
+        //make sure client owns bookings
+        if (book.client.toString() != req.client.id){
+           return res.status(401).json({msg:'Not authorized'});
+             
+        }
+
+        //update booking
+        book = await Booking.findByIdAndUpdate(req.params.id,
+            {$set: bookingFields},
+            {new: true});
+
+            res.json(book)
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({msg:'Server error'})
+    }
+
 });
 
 // @route       GET api/bookings
 // @ desc       Delete Clients bookings
 // @access      Pricate
-router.delete('/:id', (req, res) =>{
-    res.send('Delete bookings');
+router.delete('/:id', auth ,async (req, res) =>{
+    try {
+        let book = await Booking.findById(req.params.id);
+        if(!book) return res.status(404).json({mssg:'booking not found'});
+
+        //make sure client owns bookings
+        if (book.client.toString() != req.client.id){
+           return res.status(401).json({msg:'Not authorized'});
+             
+        }
+
+        await Booking.findByIdAndRemove(req.params.id)
+
+            res.json({msg : 'booking removed'})
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({msg:'Server error'})
+    }
 });
 
 
