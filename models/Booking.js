@@ -21,13 +21,19 @@ const BookingSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    booking: {
-        type: String,
-        required: true
+    appointment: {
+        type: Date,
+        required: true,
+        unique: true
     },
-    style: {
+    styling: {
         type: String,
         default: 'acrylic'
+    },
+    time: {
+        type: String,
+        required: true,
+        unique: true
     }
 });
 

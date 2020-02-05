@@ -27,7 +27,8 @@ router.post('/',[auth, [
     check('name', 'Please enter your name').not().isEmpty(),
     check('surname', 'Please enter your surname').not().isEmpty(),
     check('cellphone', 'Please enter a valid cellphone number').not().isMobilePhone(),
-    check('booking', 'Please enter a booking date').not().isEmpty()
+    check('appointment', 'Please enter a booking date').not().isEmpty(),
+    check('time', 'Please enter time for appointment').not().isEmpty()
 ]], 
 async (req, res) =>{
     const errors = validationResult(req);
@@ -35,16 +36,17 @@ async (req, res) =>{
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const {name,surname, cellphone, booking, style, } = req.body;
+    const {name,surname, cellphone, appointment, styling,time } = req.body;
 
     try {
         const newBooking = new Booking ({
                 name,
                 surname,
                 cellphone,
-                booking,
+                appointment,
                 client : req.client.id,
-                style
+                styling,
+                time
                 
         });
 
@@ -61,15 +63,16 @@ async (req, res) =>{
 // @ desc       Update bookings
 // @access      Private
 router.put('/:id',auth ,async (req, res) =>{
-    const {name,surname, cellphone, booking, style, } = req.body;
+    const {name,surname, cellphone, booking, style, time} = req.body;
     
     //build booking object
     const bookingFields = {}
     if(name) bookingFields.name = name;
     if(surname) bookingFields.surname = surname;
     if(cellphone) bookingFields.cellphone = cellphone;
-    if(booking) bookingFields.booking = booking;
-    if(style) bookingFields.style = style;
+    if(appointment) bookingFields.booking = booking;
+    if(styling) bookingFields.style = style;
+    if(time) bookingFields.time = time
 
     try {
         let book = await Booking.findById(req.params.id);

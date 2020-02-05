@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server":"nodemon server.js"
-    
+    "server": "nodemon server.js",
+    "be-youtiful": "npm start --prefix be-youtiful",
+    "dev": "concurrently \"npm run server\" \"npm run be-youtiful\""
   },
   "keywords": [],
   "author": "",
