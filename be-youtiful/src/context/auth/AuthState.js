@@ -99,14 +99,16 @@ const login = async(formData) => {
             type: LOGIN_FAIL,
             payload: err.response.data.msg
             
-        }) 
+        })
         
     }
 }
 
 //Logout
 const logout = () => {
-    console.log('logout client')
+    dispatch({
+        type:LOGOUT
+    })
 }
 
 // Clear errors
