@@ -1,6 +1,7 @@
 import React from  'react'
 import Bookings from '../bookings/Bookings'
 import BookingForm from '../bookings/BookingForm'
+import BookingFilter from '../bookings/BookingFilter'
 
 const Home = () => {
     return(

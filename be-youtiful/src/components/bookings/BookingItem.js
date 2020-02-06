@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import BookingContext from '../../context/booking/bookingContext';
 import {faPhone, faCalendarAlt, faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
@@ -6,8 +7,16 @@ import PropTypes from 'prop-types'
 
 
 const BookingItem = ({booking}) => {
+    const bookingContext =  useContext(BookingContext) 
+    const {deleteBooking, setCurrent,clearCurrent} = bookingContext;
+
+
     const { name, surname, id, cellphone, styling, appointment,time } = booking 
 
+    const onDelete = () =>{
+        deleteBooking(id);
+        clearCurrent();
+    }
 
     return(
         <div className="card bg-light">
@@ -43,8 +52,8 @@ const BookingItem = ({booking}) => {
 
             
             <p>
-                <button className="btn btn-dark btn-sm">Edit</button>
-                <button className="btn btn-danger btn-sm">Delete</button>
+                <button className="btn btn-dark btn-sm" onClick={()=> setCurrent(booking)}>Edit</button>
+                <button className="btn btn-danger btn-sm" onClick={onDelete}>Delete</button>
             </p>
         </div>
     )

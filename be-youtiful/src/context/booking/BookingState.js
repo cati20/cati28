@@ -51,7 +51,9 @@ const BookingState = props =>{
                 time:"15H00"
                 
             }
-        ]
+        ],
+        current: null,
+        filtered: null
     };
 
     const [state, dispatch] = useReducer(bookingReducer, initialState);
@@ -64,22 +66,50 @@ const BookingState = props =>{
     }
 
     //delete booking
-
+    const deleteBooking = id =>{
+        
+        dispatch({ type: DELETE_BOOKING, payload: id })
+    }
     //set current booking
-
+    const setCurrent = booking =>{
+        
+        dispatch({ type: SET_CURRENT, payload: booking })
+    }
     //clear current booking
-
+    const clearCurrent = ()=>{
+        
+        dispatch({ type: CLEAR_CURRENT})
+    }
     //update booking
+    const updateBooking = (booking)=>{
+        
+        dispatch({ type: UPDATE_BOOKING, payload: booking})
+    }
 
     //filter booking
-
-    //clear 
+    const filterBookings = (text)=>{
+        
+        dispatch({ type: FILTER_BOOKING, payload: text})
+    }
+    //clear filter
+    const clearFilter = ()=>{
+        
+        dispatch({ type: CLEAR_FILTER})
+    }
     
     return(
         <bookingContext.Provider
             value={{
                 bookings : state.bookings,
-                addBooking
+                current: state.current,
+                filtered: state.filtered,
+                addBooking,
+                deleteBooking,
+                setCurrent,
+                clearCurrent,
+                updateBooking,
+                filterBookings,
+                clearFilter
             }}
         >
             {props.children}

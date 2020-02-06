@@ -1,4 +1,4 @@
-import React ,{useState, useContext} from 'react';
+import React ,{useState, useContext, useEffect} from 'react';
 import BookingContext from '../../context/booking/bookingContext';
 import Calendar from 'react-calendar';
 import {fascalendar, faCalendar, faCalendarAlt ,faClock} from '@fortawesome/free-solid-svg-icons'
@@ -16,12 +16,29 @@ const BookingForm = () =>{
 
     const bookingContext = useContext(BookingContext);
 
+    const {addBooking ,updateBooking ,clearCurrent, current} =bookingContext
+
+    useEffect(()=>{
+        if(current !== null){
+            setBooking(current)
+        }else{
+            setBooking({
+                name: '',
+                surname: '',
+                cellphone:'',
+                appointment:'',
+                styling:''
+            })
+        }
+    }, [bookingContext, current])
+
     const [booking, setBooking] =useState({
         name: '',
         surname: '',
         cellphone:'',
         appointment:'',
         styling:''
+        
     })
 
     const [cal, setCall] = useState({ date: new Date()})
@@ -42,20 +59,32 @@ const BookingForm = () =>{
 
     const onSubmit = (e) =>{
         e.preventDefault();
-        bookingContext.addBooking(booking);
-        setBooking({
+        if(current === null){
+            addBooking(booking);
+        }else{
+            updateBooking(booking)
+        }
+        clearAll();
+        
+        /* setBooking({
             name: '',
             surname: '',
             cellphone:'',
             appointment:'',
             styling:''
-        })
+        }) */
+        
+    }
+
+
+    const clearAll = () =>{
+         clearCurrent()
     }
 
     return(
         
         <form onSubmit={onSubmit}>
-            <h2 className="text-primary">Add Booking</h2>
+            <h2 className="text-primary">{current ? 'Edit Booking': 'Add Booking'}</h2>
             <input
                 type="text"
                 placeholder="Name"
@@ -121,6 +150,7 @@ const BookingForm = () =>{
         
         <p>Click the time picker to select time</p>
         <FontAwesomeIcon icon={faClock} />
+        {' '}
         <TimePicker
             onChange={onTime}
             value={time}
@@ -128,10 +158,12 @@ const BookingForm = () =>{
 
 
             <div>
-                <input type="submit" value="Book An Appointment" className="btn btn-primary btn-block" />
+                <input type="submit" value={current ? 'Update Booking': 'Booking An Appointment'}  className="btn btn-primary btn-block" />
             </div>
 
-            {console.log(time)}
+            {current && <div>
+                <button className="btn btn-light btn-block" onClick={clearAll}>Clear</button>
+            </div>}
         </form>
 
     )
