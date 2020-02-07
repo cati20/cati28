@@ -23,7 +23,7 @@ const BookingForm = () =>{
                 surname: '',
                 cellphone:'',
                 appointment:'',
-                styling:'',
+                styling:''
                 
             })
         }
@@ -35,7 +35,7 @@ const BookingForm = () =>{
         cellphone:'',
         appointment:'',
         styling:'',
-        email: null
+        
         
     })
 
@@ -63,15 +63,8 @@ const BookingForm = () =>{
             updateBooking(booking)
         }
         clearAll();
-        
-        /* setBooking({
-            name: '',
-            surname: '',
-            cellphone:'',
-            appointment:'',
-            styling:''
-        }) */
-        
+    
+
     }
 
 
