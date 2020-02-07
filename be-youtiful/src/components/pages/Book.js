@@ -3,13 +3,16 @@ import Bookings from '../bookings/Bookings'
 import BookingForm from '../bookings/BookingForm'
 import BookingFilter from '../bookings/BookingFilter'
 import AuthContext from '../../context/auth/authContext';
+
 const Book = () => {
     const authContext = useContext(AuthContext)
     const {loadClient} = authContext
-    useEffect( ()=> {
+
+    useEffect(()=> {
         loadClient();
         // eslint-disable-next-line
     },[])
+
     return(
         < div className="grid-2">
             <div>

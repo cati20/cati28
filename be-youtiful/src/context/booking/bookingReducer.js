@@ -5,29 +5,49 @@ import {
     CLEAR_CURRENT,
     UPDATE_BOOKING,
     FILTER_BOOKING,
-    CLEAR_FILTER
+    CLEAR_FILTER,
+    BOOKING_ERROR,
+    GET_BOOKINGS,
+    CLEAR_BOOKING
 } from '../types'
 
 
 export default (state, action) =>{
     switch(action.type){
+        case GET_BOOKINGS:
+            return {
+                ...state,
+                bookings: action.payload,
+                loading: false
+            }
         case ADD_BOOKING:
             return {
                 ...state,
-                bookings: [...state.bookings, action.payload]
+                bookings: [action.payload, ...state.bookings ],
+                loading: false
             };
         case UPDATE_BOOKING:
             return{
                 ...state,
-                bookings: state.bookings.map(booking => booking.id === action.payload.id? 
+                bookings: state.bookings.map(booking => booking._id === action.payload._id? 
                 action.payload: booking   
-                 )
+                 ),
+                 loading: false
             };    
         case DELETE_BOOKING:
             return {
                 ...state,
-                bookings: state.bookings.filter(booking => booking.id !== action.payload)
+                bookings: state.bookings.filter(booking => booking._id !== action.payload),
+                loading: false
             };
+        case CLEAR_BOOKING:
+            return {
+                ...state,
+                bookings: null,
+                filtred: null,
+                error: null,
+                current:null
+            }    
         case SET_CURRENT:
             return {
                 ...state,
@@ -51,6 +71,11 @@ export default (state, action) =>{
                 ...state,
                 filtered:null
             }    
+        case BOOKING_ERROR:
+            return {
+                ...state,
+                error: action.payload
+            };   
         default:
             return state;    
     }

@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import BookingContext from '../../context/booking/bookingContext';
-import {faPhone, faCalendarAlt, faClock } from '@fortawesome/free-solid-svg-icons'
+import AuthContext from '../../context/auth/authContext';
+import {faPhone, faCalendarAlt, faClock, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
 
@@ -8,13 +9,14 @@ import PropTypes from 'prop-types'
 
 const BookingItem = ({booking}) => {
     const bookingContext =  useContext(BookingContext) 
+    const authContext = useContext(AuthContext);
+
+    const {client} = authContext;
     const {deleteBooking, setCurrent,clearCurrent} = bookingContext;
-
-
-    const { name, surname, id, cellphone, styling, appointment,time } = booking 
+    const { name, surname, _id, cellphone, styling, appointment,time } = booking 
 
     const onDelete = () =>{
-        deleteBooking(id);
+        deleteBooking(_id);
         clearCurrent();
     }
 
@@ -48,7 +50,12 @@ const BookingItem = ({booking}) => {
                 <FontAwesomeIcon icon={faClock} /> {time}
                 </li>)}
             </ul>
-
+            
+            <ul className="list">
+                {cellphone && (<li>
+                <FontAwesomeIcon icon={faEnvelope} /> {client.email}
+                </li>)}
+            </ul>
 
             
             <p>

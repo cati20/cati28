@@ -2,15 +2,20 @@ import React ,{Fragment, useContext}from 'react';
 import PropTypes from  'prop-types';
 import {Link} from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
+import BookingContext from '../../context/booking/bookingContext';
 import {faSignOutAlt, faHome, faCameraRetro,faIdCard, faUserPlus, faSignInAlt} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Navbar = () => {
     const authContext = useContext(AuthContext);
+    const bookingContext =useContext(BookingContext);
+
+    const {clearBookings} = bookingContext
     const {isAuthenticated, logout, client} = authContext;
 
     const onLogout = () =>{
         logout();
+        clearBookings();
     }
     const authLinks = (
         <Fragment>

@@ -21,11 +21,12 @@ import AlertState from './context/alert/AlertState';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
+  console.log(localStorage.token)
 }
 
 
 
-function App() {
+const App = () => {
   return (
     <AuthState>
     <BookingState>

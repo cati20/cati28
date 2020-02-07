@@ -1,13 +1,10 @@
 import React ,{useState, useContext, useEffect} from 'react';
 import BookingContext from '../../context/booking/bookingContext';
+import AuthContext from '../../context/auth/authContext';
 import Calendar from 'react-calendar';
 import {fascalendar, faCalendar, faCalendarAlt ,faClock} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TimePicker from 'react-time-picker';
- 
-
-
-
 
 
 
@@ -15,9 +12,8 @@ import TimePicker from 'react-time-picker';
 const BookingForm = () =>{
 
     const bookingContext = useContext(BookingContext);
-
     const {addBooking ,updateBooking ,clearCurrent, current} =bookingContext
-
+    
     useEffect(()=>{
         if(current !== null){
             setBooking(current)
@@ -27,7 +23,8 @@ const BookingForm = () =>{
                 surname: '',
                 cellphone:'',
                 appointment:'',
-                styling:''
+                styling:'',
+                
             })
         }
     }, [bookingContext, current])
@@ -37,7 +34,8 @@ const BookingForm = () =>{
         surname: '',
         cellphone:'',
         appointment:'',
-        styling:''
+        styling:'',
+        email: null
         
     })
 

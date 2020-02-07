@@ -1,4 +1,4 @@
-import React, { useReducer } from "react"
+import React, { useReducer } from "react";
 import bookingContext from './bookingContext';
 import uuid from 'uuid';
 import bookingReducer from './bookingReducer';
@@ -9,67 +9,115 @@ import {
     CLEAR_CURRENT,
     UPDATE_BOOKING,
     FILTER_BOOKING,
-    CLEAR_FILTER
+    CLEAR_FILTER,
+    BOOKING_ERROR,
+    GET_BOOKINGS,
+    CLEAR_BOOKING
 } from '../types'
+import Axios from "axios";
  
 const BookingState = props =>{
     const initialState ={
-        bookings:[
-            {
-                styling: "acrylic",
-                id: "1",
-                name: "milton",
-                surname: "ngobeni",
-                cellphone: "078-729-349",
-                appointment: "28 February 2021",
-                client: "5e34b646687a9ca1001a5041",
-                date: "2020-01-31T23:25:21.615Z",
-                time:"15H00"
-                
-            },
-            {
-                styling: "acrylic",
-                id: "2",
-                name: "phemelo",
-                surname: "modiba",
-                cellphone: "078-729-349",
-                appointment: "28 February 2021",
-                client: "5e34b646687a9ca1001a5041",
-                date: "2020-01-31T23:25:21.615Z",
-                time:"15H00"
-                
-            },
-            {
-                styling: "gel",
-                id: "3",
-                name: "puseletso",
-                surname: "sekgobela",
-                cellphone: "078-729-349",
-                appointment: "28 February 2021",
-                client: "5e34b646687a9ca1001a5041",
-                date: "2020-01-31T23:25:21.615Z",
-                time:"15H00"
-                
-            }
-        ],
+        bookings:null,
         current: null,
-        filtered: null
+        filtered: null,
+        error: null
     };
 
     const [state, dispatch] = useReducer(bookingReducer, initialState);
 
+    //Get Bookings
+    const getBookings = async () =>{
+        
+        try {
+            const res = await Axios.get('/api/bookings');
+            dispatch({
+                 type: GET_BOOKINGS, 
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type:BOOKING_ERROR,
+                payload: err.response.data.msg
+            })
+        }
+    }
 
     //add booking
-    const addBooking = booking =>{
-        booking.id = uuid.v4();
-        dispatch({ type: ADD_BOOKING, payload: booking});
+    const addBooking = async booking =>{
+        const config = {
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }
+
+        try {
+            const res = await Axios.post('/api/bookings', booking, config);
+            dispatch({
+                 type: ADD_BOOKING, 
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type:BOOKING_ERROR,
+                payload: err.response.data.msg
+            })
+        }
+
+        
     }
 
     //delete booking
-    const deleteBooking = id =>{
+    const deleteBooking =async id =>{
+        try {
+            await Axios.delete(`/api/bookings/${id}`);
+            dispatch({
+                 type: DELETE_BOOKING,
+                  payload: id 
+                })
+            
+        } catch (err) {
+            dispatch({
+                type:BOOKING_ERROR,
+                payload: err.response.data.msg
+            })
+        }
         
-        dispatch({ type: DELETE_BOOKING, payload: id })
     }
+
+    //update booking
+    const updateBooking = async (booking)=>{
+        const config = {
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }
+
+        try {
+            const res = await Axios.put(`/api/bookings/${booking._id}`, booking, config);
+            dispatch({
+                 type: UPDATE_BOOKING,
+                  payload: res.data
+                })
+
+        } catch (err) {
+            dispatch({
+                type:BOOKING_ERROR,
+                payload: err.response.data.msg
+            })
+            console.log(err.response.data.msg)
+        }
+        
+        
+    }
+
+    //Clear Bookings
+    const clearBookings = () =>{
+        dispatch({
+            type: CLEAR_BOOKING
+        })
+    }
+
     //set current booking
     const setCurrent = booking =>{
         
@@ -80,11 +128,7 @@ const BookingState = props =>{
         
         dispatch({ type: CLEAR_CURRENT})
     }
-    //update booking
-    const updateBooking = (booking)=>{
-        
-        dispatch({ type: UPDATE_BOOKING, payload: booking})
-    }
+    
 
     //filter booking
     const filterBookings = (text)=>{
@@ -103,13 +147,15 @@ const BookingState = props =>{
                 bookings : state.bookings,
                 current: state.current,
                 filtered: state.filtered,
+                error: state.error,
                 addBooking,
                 deleteBooking,
                 setCurrent,
                 clearCurrent,
                 updateBooking,
                 filterBookings,
-                clearFilter
+                clearFilter, getBookings,
+                clearBookings
             }}
         >
             {props.children}

@@ -63,15 +63,15 @@ async (req, res) =>{
 // @ desc       Update bookings
 // @access      Private
 router.put('/:id',auth ,async (req, res) =>{
-    const {name,surname, cellphone, booking, style, time} = req.body;
+    const {name,surname, cellphone, appointment, styling, time} = req.body;
     
     //build booking object
     const bookingFields = {}
     if(name) bookingFields.name = name;
     if(surname) bookingFields.surname = surname;
     if(cellphone) bookingFields.cellphone = cellphone;
-    if(appointment) bookingFields.booking = booking;
-    if(styling) bookingFields.style = style;
+    if(appointment) bookingFields.booking = appointment;
+    if(styling) bookingFields.style = styling;
     if(time) bookingFields.time = time
 
     try {
