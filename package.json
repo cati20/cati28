@@ -7,7 +7,9 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "be-youtiful": "npm start --prefix be-youtiful",
-    "dev": "concurrently \"npm run server\" \"npm run be-youtiful\""
+    "clientinstall": "npm install --prefix be-youtiful",
+    "dev": "concurrently \"npm run server\" \"npm run be-youtiful\"",
+    "heroku-postbuild": "NPM_CONFIGPRODUCTION=false npm install --prefix be-youtiful && npm run build --prefix be-youtiful"
   },
   "keywords": [],
   "author": "",

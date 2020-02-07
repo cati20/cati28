@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db')
+const path = require('path');
 
 const app= express();
 
@@ -9,12 +10,20 @@ connectDB();
 //initialize middleware
 app.use(express.json({extended: false}));
 
-app.get('/',  (req ,res) => res.json({msg: 'Welcome to be-youtiful-nales API...'}));
 
 //define routes
 app.use('/api/clients' , require('./routes/client'));
 app.use('/api/auth' , require('./routes/auth'));
 app.use('/api/bookings' , require('./routes/booking'));
+
+//server static assets in production
+
+if (process.env.NODE_ENV === 'production') {
+    //set static folder
+    app.use(express.static('be-youtiful/build'));
+
+    app.get('*',(req,res) => res.sendFile(path.resolve(__dirname, 'be-youtiful', 'build','index.html')))
+}
 
 const PORT = process.env.PORT || 5000;
 
