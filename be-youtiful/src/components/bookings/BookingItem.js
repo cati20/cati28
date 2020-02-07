@@ -53,7 +53,7 @@ const BookingItem = ({booking}) => {
             
             <ul className="list">
                 {cellphone && (<li>
-                <FontAwesomeIcon icon={faEnvelopeclear} /> {client.email}
+                <FontAwesomeIcon icon={faEnvelope} /> {client.email}
                 </li>)}
             </ul>
 
