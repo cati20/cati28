@@ -52,7 +52,7 @@ const BookingState = props =>{
         }
 
         try {
-            const res = await Axios.post('/api/bookings', booking, config);
+            const res = await Axios.post('http://localhost:5000/api/bookings', booking, config);
             dispatch({
                  type: ADD_BOOKING, 
                 payload: res.data

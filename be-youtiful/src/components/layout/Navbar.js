@@ -5,6 +5,8 @@ import AuthContext from '../../context/auth/authContext';
 import BookingContext from '../../context/booking/bookingContext';
 import {faSignOutAlt, faHome, faCameraRetro,faIdCard, faUserPlus, faSignInAlt} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {Menu,Segment, Container} from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css';
 
 const Navbar = () => {
     const authContext = useContext(AuthContext);
@@ -35,32 +37,42 @@ const Navbar = () => {
                  <li>
                     <Link to="/"><FontAwesomeIcon icon={faHome}/> Home</Link>
                 </li>
-                <li>
-                    <Link to="/gallery"><FontAwesomeIcon icon={faCameraRetro}/>Gallery</Link>
-                </li>
-                <li>
-                    <Link to="/about"><FontAwesomeIcon icon={faIdCard}/>About</Link>
-                </li>
-                <li>
-                    <Link to="/register"><FontAwesomeIcon icon={faUserPlus}/>Register</Link>
-                </li>
-                <li>
-                    <Link to="/login"><FontAwesomeIcon icon={faSignInAlt}/>Login</Link>
-                </li>
         </Fragment>
     );
     
 
 
     return (
-        <div className=" navbar bg-primary">
-            <h1>Navbar</h1>
-            <ul>
-            
-                {isAuthenticated? authLinks : guesthLinks }
+        
+       <Menu fixed="top" inverted>
+         <Container>   
+        <Menu.Item header>
+            <img src="/assets/logo.png" alt="logo" style={{marginRight: '10px'}}/>
+            Be youtiful nails
+        </Menu.Item>
+        <Menu.Item
+          name='Home'
+	>
+	<Link to="/"><FontAwesomeIcon icon={faHome}/>Home</Link>
+        </Menu.Item>
+        <Menu.Item
+          name='Gallery'
+        />
+        <Menu.Item
+          name='Register'
+        />
+        <Menu.Item
+          name='Sign In'
+        />
+	
+        </Container>
+      </Menu>
+
+
+
+//{isAuthenticated? authLinks : guesthLinks }
                 
-            </ul>
-        </div>
+           
     )
 }
 

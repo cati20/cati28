@@ -6,10 +6,10 @@ import AuthContext from '../../context/auth/authContext';
 
 const Book = () => {
     const authContext = useContext(AuthContext)
-    const {loadClient} = authContext
+    //const {loadClient} = authContext
 
     useEffect(()=> {
-        loadClient();
+        authContext.loadClient();
         // eslint-disable-next-line
     },[])
 

@@ -29,11 +29,21 @@ const AuthState = props =>{
 
 // Load client
 const loadClient = async() => {
+	const auth = localStorage.token
+	const config = {
+        headers: {
+            'Content-Type': 'application/json',
+	    'x-auth-token': `${auth}`
+        }
+      
+    }
+
     if(localStorage.token){
         setAuthToken(localStorage.token);
     }
+
     try {
-        const res = await axios.get('/api/auth');
+        const res = await axios.get('http://fw1.sshreach.me:14568/api/auth', config);
         dispatch({
             type: CLIENT_LOADED,
             payload: res.data
@@ -47,6 +57,8 @@ const loadClient = async() => {
     
 }
 
+
+
 // Register Client
 const register = async formData =>{
     const config = {
@@ -57,7 +69,7 @@ const register = async formData =>{
     }
 
     try {
-        const res = await axios.post('api/clients',formData ,config);
+        const res = await axios.post('http://fw1.sshreach.me:14568/api/clients',formData ,config);
 
         dispatch({
             type: REGISTER_SUCCESS,
@@ -86,7 +98,7 @@ const login = async(formData) => {
     }
 
     try {
-        const res = await axios.post('api/auth',formData ,config);
+        const res = await axios.post('http://fw1.sshreach.me:14568/api/auth',formData ,config);
 
         dispatch({
             type: LOGIN_SUCCESS,

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import './App.css';
+import 'semantic-ui-css/semantic.min.css';
 import Navbar from './components/layout/Navbar';
 import Book from './components/pages/Book';
 import About from './components/pages/About';
@@ -21,9 +22,10 @@ import AlertState from './context/alert/AlertState';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
-  console.log(localStorage.token)
+  console.log(setAuthToken.token)
 }
 
+console.log(setAuthToken)
 
 
 const App = () => {

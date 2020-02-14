@@ -1,10 +1,7 @@
 import React ,{useState, useContext, useEffect} from 'react';
 import BookingContext from '../../context/booking/bookingContext';
 import AuthContext from '../../context/auth/authContext';
-import Calendar from 'react-calendar';
-import {fascalendar, faCalendar, faCalendarAlt ,faClock} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import TimePicker from 'react-time-picker';
+import { Grid, Header, Segment, Form, Button, Message, Input, Select, Divider } from 'semantic-ui-react';
 
 
 
@@ -13,6 +10,13 @@ const BookingForm = () =>{
 
     const bookingContext = useContext(BookingContext);
     const {addBooking ,updateBooking ,clearCurrent, current} =bookingContext
+
+
+const options = [
+    { key: 'all', text: 'All', value: 'all' },
+    { key: 'articles', text: 'Articles', value: 'articles' },
+    { key: 'products', text: 'Products', value: 'products' },
+  ]
     
     useEffect(()=>{
         if(current !== null){
@@ -35,23 +39,16 @@ const BookingForm = () =>{
         cellphone:'',
         appointment:'',
         styling:'',
+	time: ''
         
         
     })
 
-    const [cal, setCall] = useState({ date: new Date()})
-    const [App_time, setApp_time] = useState({ time:'10:00'})
     
+   
 
-    const {name, surname, cellphone, appointment, styling } = booking
+    const {name, surname, cellphone, appointment, styling ,time} = booking
 
-    const {date} =cal
-    const{time} = App_time
-
-    const onChanged = date => setCall({date:date})
-
-    const onTime = (time) => setApp_time({time:time})
-    
 
     const onChange = (e) => setBooking({...booking, [e.target.name]: e.target.value});
 
@@ -73,90 +70,30 @@ const BookingForm = () =>{
     }
 
     return(
+         <Grid  style={{ height: '100vh' }} verticalAlign='middle'>
+    <Grid.Column style={{ maxWidth: 450 }}>
+      <Header as='h2' color='teal' textAlign='center'>
+        Book an appointment
+      </Header>
+      <Form size='medium' onSubmit={onSubmit}>
+        <Segment stacked>
+          <Form.Input fluid icon='user' iconPosition='left' placeholder='Name' value={name} name="name" onChange={onChange} />
+          <Form.Input fluid icon='user' iconPosition='left' placeholder='Surname' value={surname} name="surname" onChange={onChange} />
+          <Form.Input fluid icon='phone' iconPosition='left' placeholder="Cellphone" type="phone" value={cellphone} name="cellphone" onChange={onChange} />
+          <Form.Input fluid icon='als' iconPosition='left' placeholder="Gel or Acrylic" value={styling} name="styling" onChange={onChange} />
+          <Input icon='paint brush' iconPosition='left' placeholder="Nails Colour"    />
+          <Select compact options={options} defaultValue='articles' />
+          <Form.Input fluid icon='calendar' iconPosition='left'  type="date" value={appointment} name="appointment" onChange={onChange} />
+          <Form.Input fluid icon='clock' iconPosition='left' placeholder="Appointment Time" type="time" value={time} name="time" onChange={onChange} />
+          
+          <Button color='teal' fluid size='large'type="submit">
+            Book
+          </Button>
+        </Segment>
+      </Form>
+    </Grid.Column>
+  </Grid>
         
-        <form onSubmit={onSubmit}>
-            <h2 className="text-primary">{current ? 'Edit Booking': 'Add Booking'}</h2>
-            <input
-                type="text"
-                placeholder="Name"
-                name="name"
-                value={name}
-                onChange={onChange}
-                required
-            />
-
-            <input
-                type="text"
-                placeholder="Surname"
-                name="surname"
-                value={surname}
-                onChange={onChange}
-                required
-            />
-
-            <input
-                type="text"
-                placeholder="cellphone"
-                name="cellphone"
-                value={cellphone}
-                onChange={onChange}
-                required
-            />
-
-            <input
-                type="text"
-                placeholder="Style"
-                name="styling"
-                value={styling}
-                onChange={onChange}
-                required
-            />
-             <input
-                type="text"
-                placeholder="Appointment"
-                name="appointment"
-                value={date}
-                onFocus={onChange}
-                required
-            />
-
-            <input
-                type="text"
-                placeholder="time"
-                name="time"
-                value={time}
-                onFocus={onChange}
-                required
-            />
-
-
-
-
-            <p>Choose the date appointment date on the calendar</p>
-            <FontAwesomeIcon icon={faCalendar} />
-            < Calendar
-                onChange={onChanged}
-                value={date}
-            />
-        
-        <p>Click the time picker to select time</p>
-        <FontAwesomeIcon icon={faClock} />
-        {' '}
-        <TimePicker
-            onChange={onTime}
-            value={time}
-        />
-
-
-            <div>
-                <input type="submit" value={current ? 'Update Booking': 'Booking An Appointment'}  className="btn btn-primary btn-block" />
-            </div>
-
-            {current && <div>
-                <button className="btn btn-light btn-block" onClick={clearAll}>Clear</button>
-            </div>}
-        </form>
-
     )
 }
 
