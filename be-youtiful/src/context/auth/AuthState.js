@@ -43,7 +43,7 @@ const loadClient = async() => {
     }
 
     try {
-        const res = await axios.get('http://fw1.sshreach.me:14568/api/auth', config);
+        const res = await axios.get('http://localhost:5000/api/auth', config);
         dispatch({
             type: CLIENT_LOADED,
             payload: res.data
@@ -69,7 +69,7 @@ const register = async formData =>{
     }
 
     try {
-        const res = await axios.post('http://fw1.sshreach.me:14568/api/clients',formData ,config);
+        const res = await axios.post('http://localhost:5000/api/clients',formData ,config);
 
         dispatch({
             type: REGISTER_SUCCESS,
@@ -98,7 +98,7 @@ const login = async(formData) => {
     }
 
     try {
-        const res = await axios.post('http://fw1.sshreach.me:14568/api/auth',formData ,config);
+        const res = await axios.post('http://localhost:5000/api/auth',formData ,config);
 
         dispatch({
             type: LOGIN_SUCCESS,
