@@ -11,9 +11,9 @@ import Login from './components/auth/Login';
 import Footer from './components/pages/Footer';
 import Alerts from './components/layout/Alerts';
 import setAuthToken from './utils/setAuthToken'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
 import PrivateRoute from './components/routing/PrivateRoute'
-import { Segment, Responsive, Icon, Menu, Sidebar, Header,Image, Button} from 'semantic-ui-react';
+import { Segment, Responsive, Icon, Menu, Sidebar, Header,Image, Button, Card} from 'semantic-ui-react';
 
 //import bookingState from './context/booking/bookingState';
 import BookingState from './context/booking/BookingState';
@@ -59,23 +59,29 @@ const App = () => {
       >
         <Menu.Item as='a'>
           <Icon name='home' />
-          Home
+          <Link to="/">Home</Link>
         </Menu.Item>
         <Menu.Item as='a'>
-          <Icon name='gamepad' />
-          Games
+          <Icon name='sign-in' />
+          <Link to="/login">Sign In </Link>
         </Menu.Item>
         <Menu.Item as='a'>
-          <Icon name='camera' />
-          Channels
+          <Icon name='signup' />
+          <Link to="/register">Sign-Up </Link>
+        </Menu.Item>
+        <Menu.Item as='a'>
+          <Icon name='phone' />
+          <Link to="/contact-us">Contact Us </Link>
         </Menu.Item>
       </Sidebar>
 
-      <Sidebar.Pusher>
-        <Segment basic>
-          <Header as='h3'>Application Content</Header>
+      <Sidebar.Pusher dimmed={visible} >
+        <Card piled >
+        <Image src='https://via.placeholder.com/150/000000/FFFFFF/?text=IPaddress.net
+
+C/O https://placeholder.com/'/>
           
-        </Segment>
+        </Card>
       </Sidebar.Pusher>
     </Sidebar.Pushable>
     </Responsive>
@@ -90,8 +96,6 @@ const App = () => {
           </Switch>
         </div>
       </Fragment>  
-      
-      <Footer />    
     </Router>
     </AlertState>
     </BookingState>
