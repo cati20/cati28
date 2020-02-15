@@ -1,7 +1,7 @@
 import React ,{useState, useContext, useEffect} from 'react';
 import BookingContext from '../../context/booking/bookingContext';
 import AuthContext from '../../context/auth/authContext';
-import { Grid, Header, Segment, Form, Button, Message, Input, Select, Divider } from 'semantic-ui-react';
+import { Grid, Header, Segment, Form, Button } from 'semantic-ui-react';
 
 
 
@@ -39,7 +39,8 @@ const options = [
         cellphone:'',
         appointment:'',
         styling:'',
-	time: ''
+        time: '',
+        colour: ''
         
         
     })
@@ -47,8 +48,9 @@ const options = [
     
    
 
-    const {name, surname, cellphone, appointment, styling ,time} = booking
+    const {name, surname, cellphone, appointment, styling ,time, colour} = booking
 
+    
 
     const onChange = (e) => setBooking({...booking, [e.target.name]: e.target.value});
 
@@ -73,7 +75,7 @@ const options = [
          <Grid  style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='teal' textAlign='center'>
-        Book an appointment
+        {current? "Update Appointment" : "Book an appointment"}
       </Header>
       <Form size='medium' onSubmit={onSubmit}>
         <Segment stacked>
@@ -81,13 +83,12 @@ const options = [
           <Form.Input fluid icon='user' iconPosition='left' placeholder='Surname' value={surname} name="surname" onChange={onChange} />
           <Form.Input fluid icon='phone' iconPosition='left' placeholder="Cellphone" type="phone" value={cellphone} name="cellphone" onChange={onChange} />
           <Form.Input fluid icon='als' iconPosition='left' placeholder="Gel or Acrylic" value={styling} name="styling" onChange={onChange} />
-          <Input icon='paint brush' iconPosition='left' placeholder="Nails Colour"    />
-          <Select compact options={options} defaultValue='articles' />
+          <Form.Input icon='paint brush' iconPosition='left' placeholder="Nails Colour" name="colour" value={colour} onChange={onChange}  />
           <Form.Input fluid icon='calendar' iconPosition='left'  type="date" value={appointment} name="appointment" onChange={onChange} />
           <Form.Input fluid icon='clock' iconPosition='left' placeholder="Appointment Time" type="time" value={time} name="time" onChange={onChange} />
           
           <Button color='teal' fluid size='large'type="submit">
-            Book
+          {current? "Update" : "Book"}
           </Button>
         </Segment>
       </Form>

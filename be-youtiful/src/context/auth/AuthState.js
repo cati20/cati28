@@ -29,21 +29,11 @@ const AuthState = props =>{
 
 // Load client
 const loadClient = async() => {
-	const auth = localStorage.token
-	const config = {
-        headers: {
-            'Content-Type': 'application/json',
-	    'x-auth-token': `${auth}`
-        }
-      
-    }
-
     if(localStorage.token){
-        setAuthToken(localStorage.token);
+        setAuthToken(localStorage.token)
     }
-
     try {
-        const res = await axios.get('/api/auth', config);
+        const res = await axios.get('/api/auth');
         dispatch({
             type: CLIENT_LOADED,
             payload: res.data
@@ -64,8 +54,7 @@ const register = async formData =>{
     const config = {
         headers: {
             'Content-Type': 'application/json'
-        }
-        
+        }   
     }
 
     try {

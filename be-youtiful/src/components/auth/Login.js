@@ -5,7 +5,7 @@ import { Button, Form, Grid, Header, Image, Message, Segment, Divider } from 'se
 import 'semantic-ui-css/semantic.min.css';
 
 
-const Login = (props) => {
+const Login = props => {
 
 
     const alertContext =  useContext(AlertContext)

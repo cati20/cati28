@@ -19,13 +19,9 @@ import BookingState from './context/booking/BookingState';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
 
-
 if(localStorage.token){
-  setAuthToken(localStorage.token);
-  console.log(setAuthToken.token)
+  setAuthToken(localStorage.token)
 }
-
-console.log(setAuthToken)
 
 
 const App = () => {

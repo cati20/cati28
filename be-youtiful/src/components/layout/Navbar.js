@@ -21,22 +21,42 @@ const Navbar = () => {
     }
     const authLinks = (
         <Fragment>
+          <Menu.Item
+          name='Register'
+          floated='right'
+          >
+            <>Hello {" "} {client && client.name }</>
             
-            <li>Hello {client && client.name }</li>
-            <li>
                 <a onClick={onLogout} href="#">
                     <FontAwesomeIcon icon={faSignOutAlt}/><span className="hide-sm">Logout</span>
                 </a>
-            </li>
             
+            </Menu.Item>
         </Fragment>
     );
 
     const guesthLinks = (
         <Fragment>
-                 <li>
-                    <Link to="/"><FontAwesomeIcon icon={faHome}/> Home</Link>
-                </li>
+         <Menu.Item
+          name='Home'
+	      >
+        <Link to="/"><FontAwesomeIcon icon={faHome}/>Home</Link>
+        </Menu.Item>
+        <Menu.Item
+          name='Gallery'
+        >
+        <Link to="/gallery"><FontAwesomeIcon icon={faCameraRetro}/>Gallery</Link>
+        </Menu.Item>
+        <Menu.Item
+          name='Register'
+        >
+           <Link to="/register"><FontAwesomeIcon icon={faUserPlus}/>Sign Up</Link>
+           </Menu.Item>
+        <Menu.Item
+          name='Sign In'
+        >
+           <Link to="/login"><FontAwesomeIcon icon={faSignInAlt}/>Sign In</Link>
+          </Menu.Item> 
         </Fragment>
     );
     
@@ -50,27 +70,14 @@ const Navbar = () => {
             <img src="/assets/logo.png" alt="logo" style={{marginRight: '10px'}}/>
             Be youtiful nails
         </Menu.Item>
-        <Menu.Item
-          name='Home'
-	>
-	<Link to="/"><FontAwesomeIcon icon={faHome}/>Home</Link>
-        </Menu.Item>
-        <Menu.Item
-          name='Gallery'
-        />
-        <Menu.Item
-          name='Register'
-        />
-        <Menu.Item
-          name='Sign In'
-        />
+        {isAuthenticated? authLinks : guesthLinks }
 	
         </Container>
       </Menu>
 
 
 
-//{isAuthenticated? authLinks : guesthLinks }
+
                 
            
     )

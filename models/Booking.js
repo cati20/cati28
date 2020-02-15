@@ -22,18 +22,22 @@ const BookingSchema = mongoose.Schema({
         default: Date.now
     },
     appointment: {
-        type: Date,
+        type: String,
         required: true,
-        unique: true
+        
     },
     styling: {
         type: String,
-        default: 'acrylic'
+        required:true
     },
     time: {
         type: String,
         required: true,
         unique: true
+    },
+    colour: {
+        type: String,
+    
     }
 });
 
