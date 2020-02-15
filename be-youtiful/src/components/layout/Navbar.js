@@ -80,7 +80,6 @@ const Navbar = () => {
         <Menu.Item header>
             <img src="/assets/logo.png" alt="logo" style={{marginRight: '10px'}}/>
             Be youtiful nails
-            <Button basic content="click me" onClick={setVisible}/>
         </Menu.Item>
         {isAuthenticated? authLinks : guesthLinks }
       
@@ -94,7 +93,6 @@ const Navbar = () => {
         <Menu.Item header>
             <img src="/assets/logo.png" alt="logo" style={{marginRight: '10px'}}/>
             Be youtiful nails
-            <Button basic content="click me" onClick={setVisible}/>
         </Menu.Item>
         {isAuthenticated? authLinks : guesthLinks }
       

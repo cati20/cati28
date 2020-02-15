@@ -77,10 +77,7 @@ const App = () => {
 
       <Sidebar.Pusher dimmed={visible} >
         <Card piled >
-        <Image src='https://via.placeholder.com/150/000000/FFFFFF/?text=IPaddress.net
-
-C/O https://placeholder.com/'/>
-          
+        <Image src='https://via.placeholder.com/150/000000/FFFFFF/?text=IPaddress.netC/O https://placeholder.com/'/>
         </Card>
       </Sidebar.Pusher>
     </Sidebar.Pushable>
