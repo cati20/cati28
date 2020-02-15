@@ -1,9 +1,8 @@
 import React ,{useContext , useEffect}from  'react'
 import Bookings from '../bookings/Bookings'
 import BookingForm from '../bookings/BookingForm'
-import BookingFilter from '../bookings/BookingFilter'
 import AuthContext from '../../context/auth/authContext';
-import { Divider, Grid,Container , Icon} from 'semantic-ui-react'
+import { Grid,Container } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 
 const Book = () => {
@@ -17,8 +16,8 @@ const Book = () => {
 
     return(
         
-    <Container placeholder>
-    <Grid columns={2} relaxed='very' stackable>
+    <Container  >
+    <Grid columns={2}  stackable>
       <Grid.Column>
       <BookingForm />
       </Grid.Column>
@@ -27,7 +26,7 @@ const Book = () => {
       <Bookings />
       </Grid.Column>
     </Grid>
-    <Divider vertical><Icon name='right arrow' /></Divider>
+    
   </Container>
     )
 }

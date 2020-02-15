@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@stardust-ui/docs-components": "^0.40.0",
     "bcryptjs": "^2.4.3",
     "config": "^3.2.5",
     "express": "^4.17.1",
