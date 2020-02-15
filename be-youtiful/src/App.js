@@ -13,7 +13,6 @@ import Alerts from './components/layout/Alerts';
 import setAuthToken from './utils/setAuthToken'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import PrivateRoute from './components/routing/PrivateRoute'
-import MobileMenu from './components/pages/MobileMenu';
 import { Segment, Responsive, Icon, Menu, Sidebar, Header,Image, Button} from 'semantic-ui-react';
 
 //import bookingState from './context/booking/bookingState';
@@ -31,7 +30,7 @@ if(localStorage.token){
 
 const App = () => {
 
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
 
   return (
     <AuthState>
