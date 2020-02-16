@@ -15,6 +15,7 @@ app.use(express.json({extended: false}));
 app.use('/api/clients' , require('./routes/client'));
 app.use('/api/auth' , require('./routes/auth'));
 app.use('/api/bookings' , require('./routes/booking'));
+app.use('/api/queries' , require('./routes/queries'));
 
 //server static assets in production
 

@@ -1,5 +1,6 @@
 import React ,{useState, useContext, useEffect} from 'react';
 import BookingContext from '../../context/booking/bookingContext';
+import AlertContext from '../../context/alert/alertContext'
 import AuthContext from '../../context/auth/authContext';
 import { Grid, Header, Segment, Form, Button } from 'semantic-ui-react';
 
@@ -10,7 +11,8 @@ const BookingForm = () =>{
 
     const bookingContext = useContext(BookingContext);
     const {addBooking ,updateBooking ,clearCurrent, current} =bookingContext
-
+    const alertContext = useContext(AlertContext)
+    const {setAlert} = alertContext
 
 const options = [
     { key: 'all', text: 'All', value: 'all' },
@@ -57,7 +59,11 @@ const options = [
     const onSubmit = (e) =>{
         e.preventDefault();
         if(current === null){
+          if(name !== '' && surname !=='' && cellphone !== '' && appointment !== '' && time !== '' && styling !== '' && colour !=='' ){
             addBooking(booking);
+          }else{
+            setAlert('Please fill in all fields', 'danger')
+          }
         }else{
             updateBooking(booking)
         }
@@ -92,6 +98,7 @@ const options = [
           </Button>
         </Segment>
       </Form>
+      {current !== null ? <Button basic fluid size='large' onClick={clearCurrent}>Clear</Button> : <div></div>}
     </Grid.Column>
   </Grid>
         

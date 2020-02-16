@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import BookingContext from '../../context/booking/bookingContext';
 import AuthContext from '../../context/auth/authContext';
+import AlertContext from '../../context/alert/alertContext'
 import PropTypes from 'prop-types'
 import { Card, Icon, Image, Button , Message, Segment, Grid} from 'semantic-ui-react'
 
@@ -9,10 +10,12 @@ import { Card, Icon, Image, Button , Message, Segment, Grid} from 'semantic-ui-r
 const BookingItem = ({booking}) => {
     const bookingContext =  useContext(BookingContext) 
     const authContext = useContext(AuthContext);
+    const alertContext = useContext(AlertContext)
 
     const {client} = authContext;
     const {deleteBooking, setCurrent,clearCurrent} = bookingContext;
-    const { name, surname, _id, cellphone, styling, appointment,time,colour } = booking 
+    const { name, surname, _id, cellphone, styling, appointment,time,colour } = booking
+    const {setAlert} = alertContext
 
     
 

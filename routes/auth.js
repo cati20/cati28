@@ -11,7 +11,7 @@ const Client  = require('../models/Client')
 // @route       POST api/auth
 // @ desc       Authenticate client and get token
 // @access      Private
-router.post('/', [
+ router.post('/', [
     check('email', 'Please enter a valid email').isEmail(),
     check('password', 'Password is required').exists()
 
@@ -60,7 +60,7 @@ async (req, res) =>{
     }
 
 
-});
+}); 
 
 
 // @route       GEt api/auth
@@ -74,7 +74,8 @@ router.get('/', auth, async (req, res) =>{
         console.error(error.message)
         res.status(500).json({msg: 'Server Error'})
     }
-});
+}); 
+
 
 
 

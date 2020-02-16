@@ -9,7 +9,7 @@ const Booking  = require('../models/Booking')
 // @route       GET api/bookings
 // @ desc       Get all user bookings
 // @access      Private
-router.get('/',auth,async (req, res) =>{
+ router.get('/',auth,async (req, res) =>{
     try {
         const booking = await  Booking.find({client: req.client.id}).sort({date: -1});
         res.json(booking)
@@ -18,7 +18,7 @@ router.get('/',auth,async (req, res) =>{
         res.status(500).send('Server error')
         
     }
-});
+}); 
 
 // @route       POST api/bookings
 // @ desc       Add new bookings
@@ -121,6 +121,21 @@ router.delete('/:id', auth ,async (req, res) =>{
         res.status(500).send({msg:'Server error'})
     }
 });
+
+
+//for admin access routes
+/* router.get('/',async (req, res) =>{
+    try {
+        const booking = await  Booking.find();
+        res.json(booking)
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error')
+        
+    }
+});
+ */
+
 
 
 module.exports = router;

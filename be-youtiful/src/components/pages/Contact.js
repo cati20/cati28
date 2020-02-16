@@ -1,9 +1,31 @@
-import React from  'react';
+import React,{useState} from  'react';
+import axios from 'axios';
 import { Card, Icon, Image,Form, Button , Message, Segment, Grid, Divider} from 'semantic-ui-react'
 
 
 
 const About = () => {
+
+const [query, setQuery] =useState({
+  name:'',
+  email:'',
+  cellphone:'',
+  message: ''
+}) 
+
+const {name, email, message, cellphone} = query;
+
+const handleChange = (e) =>setQuery({...query, [e.target.name]: e.target.value});
+
+const sendQuery = async(q) =>{
+  try {
+    const res =  await axios.post('/api/queries',q);
+      console.log(res.data.data)
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
     return(
       <Segment pilled>
     <Grid stackable columns={2}>   
@@ -31,26 +53,16 @@ const About = () => {
 
 
  <Grid.Column  >      
-<Form fluid style={{marginTop:90}}>
+<Form fluid style={{marginTop:90}} onSubmit={() =>sendQuery(query)}>
 <Form.Group widths='equal' block>
-  <Form.Input fluid label='First name' placeholder='Full Name' />
-  <Form.Input fluid label='Email' placeholder='E-mail' />
-  <Form.Input fluid label='Cellphone' placeholder='Cellphone' />
+  <Form.Input fluid label='First name' name="name" value={name} placeholder='Full Name'onChange={handleChange}/>
+  <Form.Input fluid label='Email' name="email" value={email} placeholder='E-mail' onChange={handleChange} />
+  <Form.Input fluid label='Cellphone' name="cellphone" value={cellphone} placeholder='Cellphone' onChange={handleChange} />
 
 </Form.Group>
-<Form.Group inline>
-  <label>Prefered Contact Method</label>
-  <Form.Radio
-    label='Phone'
-  />
-  <Form.Radio
-    label='Email'
-    
-  />
 
-</Form.Group>
-<Form.TextArea label='About' placeholder='Tell us more about you...' />
-<Form.Button style={{marginTop: 15}} >Submit</Form.Button>
+<Form.TextArea label='About'name="message" vaue={message} placeholder='Tell us more about you...' onChange={handleChange} />
+<Form.Button type="submit" fluid color="teal" style={{marginTop: 15}} >Submit</Form.Button>
 </Form>
 </Grid.Column>
 

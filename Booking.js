@@ -24,11 +24,13 @@ const BookingSchema = mongoose.Schema({
     appointment: {
         type: String,
         required: true,
+        unique:false
         
     },
     styling: {
         type: String,
-        required: true
+        required: true,
+        unique:false
     },
     time: {
         type:String,
@@ -37,6 +39,7 @@ const BookingSchema = mongoose.Schema({
     },
     colour: {
         type: String,
+        unique:false
     
     }
 });
