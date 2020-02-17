@@ -58,13 +58,13 @@ const Login = props => {
     }
 
     return(
-        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-    <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle' centered>
+    <Grid.Column style={{ maxWidth: 450 }} mobile="16" >
       <Header as='h2' color='teal' textAlign='center'>
         <Image src='assets/logo.png' /> <h2 style={headers}>Log-in to your account</h2>
       </Header>
       <Form size='large' onSubmit={onSubmit}>
-        <Segment stacked >
+        <Segment pilled >
           <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' value={email} name="email" onChange={onChange} />
           <Form.Input
             fluid

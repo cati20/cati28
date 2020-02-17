@@ -17,12 +17,12 @@ const Book = () => {
     return(
         
     <Container  >
-    <Grid columns={2}  stackable>
-      <Grid.Column>
+    <Grid columns={2} divided stackable>
+      <Grid.Column mobile="8">
       <BookingForm />
       </Grid.Column>
 
-      <Grid.Column verticalAlign='middle'>
+      <Grid.Column verticalAlign='middle' mobile="8">
       <Bookings />
       </Grid.Column>
     </Grid>

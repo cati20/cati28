@@ -81,7 +81,7 @@ const App = () => {
 
 
     <Responsive {...Responsive.onlyComputer}>
-    <Segment raised floated="right" style={{marginRight:120}} > 
+    <Segment raised floated="right" style={{marginRight:120}} size="large" > 
     <Grid centered container divided doubling stretched 
  stackable columns={1}>
       <Grid.Column >

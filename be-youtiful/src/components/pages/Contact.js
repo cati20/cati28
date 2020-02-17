@@ -32,12 +32,11 @@ e.preventDefault();
 
 
     return(
-      <Segment pilled>
-    <Grid stackable columns={2}>   
-
-        <Grid.Column > 
+    <Segment size="large" raised widths="equal">
+    <Grid verticalAlign='middle' Segment textAlign='center' stackable columns={2}>   
+        <Grid.Column  > 
         <Card style={{marginTop:90}}>
-        <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={true} />
+        <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
         <Card.Content>
           <Card.Header style={headers}>Puseletso</Card.Header>
           <Card.Meta>
@@ -57,7 +56,7 @@ e.preventDefault();
 
 
 
- <Grid.Column  >      
+ <Grid.Column >      
 <Form fluid style={{marginTop:90}} onSubmit={(e) =>sendQuery(e,query)}>
 <Form.Group widths='equal' block>
   <Form.Input fluid label='First name' name="name" value={name} placeholder='Full Name'onChange={handleChange}/>
@@ -70,7 +69,6 @@ e.preventDefault();
 <Form.Button type="submit" fluid color="teal" style={{marginTop: 15}} >Submit</Form.Button>
 </Form>
 </Grid.Column>
-
 </Grid>
 </Segment>
 )

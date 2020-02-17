@@ -46,7 +46,16 @@ const BookingForm = () =>{
 
     const {name, surname, cellphone, appointment, styling ,time, colour} = booking
 
-    
+    const clearForm = () => setBooking({
+      name: '',
+        surname: '',
+        cellphone:'',
+        appointment:'',
+        styling:'',
+        time: '',
+        colour: ''
+        
+    })
 
     const onChange = (e) => setBooking({...booking, [e.target.name]: e.target.value});
 
@@ -60,6 +69,7 @@ const BookingForm = () =>{
           }
         }else{
             updateBooking(booking)
+            clearForm()
         }
         clearAll();
     
@@ -69,6 +79,7 @@ const BookingForm = () =>{
 
     const clearAll = () =>{
          clearCurrent()
+         
     }
 
     return(
@@ -79,7 +90,7 @@ const BookingForm = () =>{
         
       
       <Form size='large' onSubmit={onSubmit}>
-        <Segment stacked>
+        <Segment raised >
           <Form.Input fluid icon='user' iconPosition='left' placeholder='Name' value={name} name="name" onChange={onChange} />
           <Form.Input fluid icon='user' iconPosition='left' placeholder='Surname' value={surname} name="surname" onChange={onChange} />
           <Form.Input fluid icon='phone' iconPosition='left' placeholder="Cellphone" type="phone" value={cellphone} name="cellphone" onChange={onChange} />
@@ -93,7 +104,7 @@ const BookingForm = () =>{
           </Button>
         </Segment>
       </Form>
-      {current !== null ? <Button basic fluid size='large' onClick={clearCurrent}>Clear</Button> : <div></div>}
+      {current !== null ? <Button basic fluid size='large' onClick={clearForm}>Clear</Button> : <div></div>}
     </Grid.Column>
   </Grid>
         

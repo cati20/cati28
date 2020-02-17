@@ -26,8 +26,8 @@ const BookingItem = ({booking}) => {
 
     return(
         <Grid  style={{ height: '100vh' }} verticalAlign='middle'>
-        <Grid.Column style={{ maxWidth: 450 }}>
-        <Segment>
+        <Grid.Column  mobile="16">
+        <Segment raised size="large">
         <Card fluid>
         <Image src='' wrapped ui={false} />
         <Card.Content>
