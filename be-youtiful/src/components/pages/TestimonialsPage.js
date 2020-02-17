@@ -1,16 +1,16 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardUp, MDBAvatar, MDBCardBody, MDBIcon } from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol, MDBCard,  MDBCardBody, MDBIcon } from "mdbreact";
 
 const TestimonialsPage = () => {
   return (
     <MDBContainer>
       <section className="text-center my-5">
-        <h2 className="h1-responsive font-weight-bold my-5">
+        <h2 style={headers}>
           Testimonials
         </h2>
-        <p className="dark-grey-text w-responsive mx-auto mb-5">
-          Here is what our clients say about be-youtiful nail services
+        <p className="w-responsive" style={textOnly}>
+          Here is what our clients say about be-youtiful nails services
         </p>
         <MDBRow>
           <MDBCol lg="4" md="12" className="mb-lg-0 mb-4">
@@ -80,4 +80,15 @@ const TestimonialsPage = () => {
   );
 }
 
+const headers = {
+  fontFamily: 'myriad-pro-bold',
+  fontStyle: 'normal',
+  fontWeight: 800
+}
+
+const textOnly = {
+  fontFamily: 'minion-pro-italic',
+  fontStyle: 'normal',
+  fontWeight: 700
+}
 export default TestimonialsPage;

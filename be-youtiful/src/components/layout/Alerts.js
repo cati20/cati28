@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import AlertContext from '../../context/alert/alertContext';
-import {faPhone, faCalendarAlt, faCircle} from '@fortawesome/free-solid-svg-icons'
+import {faCircle} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Alerts = () =>{

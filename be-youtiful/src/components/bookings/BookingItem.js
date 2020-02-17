@@ -31,18 +31,18 @@ const BookingItem = ({booking}) => {
         <Card fluid>
         <Image src='' wrapped ui={false} />
         <Card.Content>
-          <Card.Header>{booking.name}</Card.Header>
+          <Card.Header style={textOnly} >{booking.name}</Card.Header>
           <Card.Meta>
-            <span className='date'>Date Joined: {" "}{booking.date.slice(0,10)}</span>
+            <span className='date' style={textOnly} > Date Joined: {" "}{booking.date.slice(0,10)}</span>
           </Card.Meta>
           <Card.Description>
-          <Message floating  ><Icon name='user' />{name}{" "}{surname}</Message>
-            <Message floating  ><Icon name='phone' />{cellphone}</Message>
-            <Message floating  ><Icon name='mail' />{client.email}</Message>
-            <Message floating  ><Icon name='calendar' />{appointment}</Message>
-            <Message floating  ><Icon name='clock' />{time}</Message>
-            <Message floating  ><Icon name='als' />{styling}</Message>
-            <Message floating  ><Icon name='paint brush' />{colour}</Message>
+          <Message floating style={textOnly} ><Icon name='user' />{name}{" "}{surname}</Message>
+            <Message floating style={textOnly} ><Icon name='phone' />{cellphone}</Message>
+            <Message floating style={textOnly} ><Icon name='mail' />{client.email}</Message>
+            <Message floating style={textOnly} ><Icon name='calendar' />{appointment}</Message>
+            <Message floating style={textOnly} ><Icon name='clock' />{time}</Message>
+            <Message floating style={textOnly} ><Icon name='als' />{styling}</Message>
+            <Message floating style={textOnly} ><Icon name='paint brush' />{colour}</Message>
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
@@ -60,6 +60,12 @@ const BookingItem = ({booking}) => {
 
 BookingItem.prototype= {
     booking : PropTypes.object.isRequired
+}
+
+const textOnly = {
+  fontFamily: 'minion-pro-italic, sans-serif',
+  fontStyle: 'normal',
+  fontWeight: 500
 }
 
 export default BookingItem

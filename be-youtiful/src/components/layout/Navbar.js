@@ -1,11 +1,10 @@
-import React ,{Fragment, useContext, useState}from 'react';
-import PropTypes from  'prop-types';
+import React ,{Fragment, useContext}from 'react';
 import {Link} from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import BookingContext from '../../context/booking/bookingContext';
-import {faSignOutAlt, faHome, faCameraRetro,faIdCard, faUserPlus, faSignInAlt, faAddressBook} from '@fortawesome/free-solid-svg-icons'
+import {faSignOutAlt, faHome, faCameraRetro,faUserPlus, faSignInAlt, faAddressBook} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {Menu,Segment, Container, Responsive, Button,Sidebar, Header,Icon} from 'semantic-ui-react'
+import {Menu,Segment, Container, Responsive} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 
 const Navbar = () => {
@@ -28,7 +27,7 @@ const Navbar = () => {
           >
             <>Hello {" "} {client && client.name }</>
             
-                <a onClick={onLogout} href="#">
+                <a onClick={onLogout} href="/">
                     <FontAwesomeIcon icon={faSignOutAlt}/><span className="hide-sm">Logout</span>
                 </a>
             
@@ -68,7 +67,7 @@ const Navbar = () => {
         </Fragment>
     );
     
-    const [visible, setVisible] = useState(true)
+    
 
     return (
         
@@ -79,7 +78,7 @@ const Navbar = () => {
          <Container>   
         <Menu.Item header>
             <img src="/assets/logo.png" alt="logo" style={{marginRight: '10px'}}/>
-            Be youtiful nails
+            <p style={headers} >Be Youtiful Nails</p>
         </Menu.Item>
         {isAuthenticated? authLinks : guesthLinks }
       
@@ -107,7 +106,19 @@ const Navbar = () => {
             <img src="/assets/logo.png" alt="logo" />
             Be youtiful nails
         </Menu.Item>
+        {isAuthenticated? authLinks :
         
+      
+       <Menu.Item
+        
+       >
+          <Link to="/login"><FontAwesomeIcon icon={faSignInAlt}/>Log In</Link>
+         </Menu.Item>
+         
+        
+          
+        
+        }
          </Menu>
         </Responsive>
 
@@ -117,6 +128,13 @@ const Navbar = () => {
                 
            
     )
+}
+
+const headers = {
+  fontFamily: 'myriad-pro-light sans-serif',
+  fontStyle: 'normal',
+  fontWeight: 800,
+  color:'white'
 }
 
 export default Navbar

@@ -1,5 +1,9 @@
 body {
-  background-color: rgb(234, 234,234) !important;
+background-color: rgb(234, 234,234) !important; 
+font-family: minion-pro, serif;
+font-style: normal;
+font-weight: 400;
+
 }
 
 .ui.inverted.top.fixed.menu{

@@ -1,7 +1,6 @@
 import React ,{useState, useContext, useEffect} from 'react';
 import BookingContext from '../../context/booking/bookingContext';
 import AlertContext from '../../context/alert/alertContext'
-import AuthContext from '../../context/auth/authContext';
 import { Grid, Header, Segment, Form, Button } from 'semantic-ui-react';
 
 
@@ -10,15 +9,10 @@ import { Grid, Header, Segment, Form, Button } from 'semantic-ui-react';
 const BookingForm = () =>{
 
     const bookingContext = useContext(BookingContext);
+    const {setAlert}= useContext(AlertContext)
     const {addBooking ,updateBooking ,clearCurrent, current} =bookingContext
-    const alertContext = useContext(AlertContext)
-    const {setAlert} = alertContext
 
-const options = [
-    { key: 'all', text: 'All', value: 'all' },
-    { key: 'articles', text: 'Articles', value: 'articles' },
-    { key: 'products', text: 'Products', value: 'products' },
-  ]
+
     
     useEffect(()=>{
         if(current !== null){
@@ -80,10 +74,11 @@ const options = [
     return(
          <Grid  style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
-      <Header as='h2' color='teal' textAlign='center'>
-        {current? "Update Appointment" : "Book an appointment"}
-      </Header>
-      <Form size='medium' onSubmit={onSubmit}>
+      
+        <h2 style={headers}>{current? "Update Appointment" : "Book an appointment"}</h2>
+        
+      
+      <Form size='large' onSubmit={onSubmit}>
         <Segment stacked>
           <Form.Input fluid icon='user' iconPosition='left' placeholder='Name' value={name} name="name" onChange={onChange} />
           <Form.Input fluid icon='user' iconPosition='left' placeholder='Surname' value={surname} name="surname" onChange={onChange} />
@@ -103,6 +98,14 @@ const options = [
   </Grid>
         
     )
+}
+
+const headers = {
+  fontFamily: 'myriad-pro-light, serif',
+  fontStyle: 'normal',
+  fontWeight: 900,
+  color: '#E03996'
+  
 }
 
 export default BookingForm;

@@ -1,4 +1,3 @@
-import { render } from 'react-dom'
 import React, { useState } from 'react'
 import { useSprings, animated, interpolate } from 'react-spring'
 import { useGesture } from 'react-use-gesture'
@@ -47,4 +46,4 @@ const Gallery =()=> {
 }
 
 export default Gallery
-//render(<Deck />, document.getElementById('root'))
+

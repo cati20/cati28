@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
-import { Button, Form, Grid, Header, Image, Message, Segment, Divider } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
 
@@ -44,7 +44,7 @@ const Login = props => {
 
     const onSubmit = (e) =>{
         e.preventDefault();
-        if(email == '' || password ==''){
+        if(email === '' || password === ''){
             setAlert('Please fill in all fields', 'danger')
         }else{
             login({
@@ -61,10 +61,10 @@ const Login = props => {
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='teal' textAlign='center'>
-        <Image src='assets/logo.png' /> Log-in to your account
+        <Image src='assets/logo.png' /> <h2 style={headers}>Log-in to your account</h2>
       </Header>
       <Form size='large' onSubmit={onSubmit}>
-        <Segment stacked>
+        <Segment stacked >
           <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' value={email} name="email" onChange={onChange} />
           <Form.Input
             fluid
@@ -91,5 +91,10 @@ const Login = props => {
     )
 }
 
-
+const headers = {
+  fontFamily: 'myriad-pro-light, serif',
+  fontStyle: 'normal',
+  fontWeight: 500,
+  color: '#E03996'
+}
 export default Login

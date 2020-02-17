@@ -1,7 +1,7 @@
 import React,{useState, useContext} from  'react';
 import axios from 'axios';
 import AlertContext from '../../context/alert/alertContext'
-import { Card, Icon, Image,Form, Button , Message, Segment, Grid, Divider} from 'semantic-ui-react'
+import { Card, Icon, Image,Form, Message, Segment, Grid, Divider} from 'semantic-ui-react'
 
 
 
@@ -34,22 +34,22 @@ e.preventDefault();
     return(
       <Segment pilled>
     <Grid stackable columns={2}>   
-<Divider vertical >Or</Divider>
+
         <Grid.Column > 
         <Card style={{marginTop:90}}>
         <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={true} />
         <Card.Content>
-          <Card.Header>Puseletso</Card.Header>
+          <Card.Header style={headers}>Puseletso</Card.Header>
           <Card.Meta>
-            <span className='date'>Founder</span>
+            <span className='date' style={textOnly} >Founder</span>
           </Card.Meta>
-          <Card.Description>
+          <Card.Description style={textOnly}>
             Puseletso is the founder of Be youtiful Nails.
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Message ><Icon name="phone" />068-2929-079</Message>
-          <Message ><Icon name="mail" />be-younail@gmail.com</Message>
+          <Message style={textOnly} ><Icon name="phone"  />068-2929-079</Message>
+          <Message style={textOnly}><Icon name="mail"  />be-younail@gmail.com</Message>
         </Card.Content>
       </Card>
       </Grid.Column>
@@ -66,7 +66,7 @@ e.preventDefault();
 
 </Form.Group>
 
-<Form.TextArea label='About'name="message" vaue={message} placeholder='Tell us more about you...' onChange={handleChange} />
+<Form.TextArea label='About'name="message" vaue={message} placeholder='Ask us any question about Be Youtiful  Nails ...' onChange={handleChange} />
 <Form.Button type="submit" fluid color="teal" style={{marginTop: 15}} >Submit</Form.Button>
 </Form>
 </Grid.Column>
@@ -77,4 +77,16 @@ e.preventDefault();
 
 }
 
+
+const headers = {
+  fontFamily: 'myriad-pro-bold',
+  fontStyle: 'normal',
+  fontWeight: 800
+}
+
+const textOnly = {
+  fontFamily: 'minion-pro-italic',
+  fontStyle: 'normal',
+  fontWeight: 500
+}
 export default About

@@ -62,7 +62,7 @@ const Register = (props) => {
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='teal' textAlign='center'>
-        <Image src='assets/logo.png' /> Be Youtiful Nails Sign-Up 
+        <Image src='assets/logo.png' /> <h3 style={headers}>Be Youtiful Nails Sign-Up </h3>
       </Header>
       <Form size='large' onSubmit={onSubmit}>
         <Segment stacked>
@@ -101,5 +101,11 @@ const Register = (props) => {
     )
 }
 
+const headers = {
+  fontFamily: 'myriad-pro-light, serif',
+  fontStyle: 'normal',
+  fontWeight: 500,
+  color: '#E03996'
+}
 
 export default Register

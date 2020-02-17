@@ -1,5 +1,5 @@
 import React from 'react'
-import {Menu,Segment, Container, Message} from 'semantic-ui-react'
+import {Segment, Message} from 'semantic-ui-react'
 
 export const Footer = () => {
     return (

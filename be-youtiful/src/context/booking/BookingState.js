@@ -1,6 +1,5 @@
 import React, { useReducer } from "react";
 import bookingContext from './bookingContext';
-import uuid from 'uuid';
 import bookingReducer from './bookingReducer';
 import {
     ADD_BOOKING,
