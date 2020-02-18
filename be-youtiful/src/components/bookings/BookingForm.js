@@ -83,8 +83,8 @@ const BookingForm = () =>{
     }
 
     return(
-         <Grid  style={{ height: '100vh' }} verticalAlign='middle'>
-    <Grid.Column style={{ maxWidth: 450 }}>
+         <Grid  style={{ height: '100vh' }} verticalAlign='middle' style={{backgroundColor:'#e7e7e7'}}>
+    <Grid.Column style={{ maxWidth: 450 }} >
       
         <h2 style={headers}>{current? "Update Appointment" : "Book an appointment"}</h2>
         
@@ -104,7 +104,7 @@ const BookingForm = () =>{
           </Button>
         </Segment>
       </Form>
-      {current !== null ? <Button basic fluid size='large' onClick={clearForm}>Clear</Button> : <div></div>}
+      {current !== null ? <Button color="grey" fluid size='large' onClick={clearForm}>Clear</Button> : <div></div>}
     </Grid.Column>
   </Grid>
         
@@ -117,6 +117,12 @@ const headers = {
   fontWeight: 900,
   color: '#E03996'
   
+}
+
+const textOnly = {
+  fontFamily: 'minion-pro-italic, sans-serif',
+  fontStyle: 'normal',
+  fontWeight: 500
 }
 
 export default BookingForm;

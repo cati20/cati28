@@ -27,9 +27,7 @@ const Book = () => {
       </Grid.Column>
     </Grid>
     
-    <Responsive  {...Responsive.onlyComputer}>
-    <Divider vertical><Icon name="sync" /></Divider>
-    </Responsive>
+  
     
   </Container>
     )

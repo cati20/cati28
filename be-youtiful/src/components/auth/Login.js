@@ -77,13 +77,13 @@ const Login = props => {
 	    onChange={onChange}
           />
 
-          <Button color='teal' fluid size='large' type="submit">
+          <Button color='teal' fluid size='large' type="submit" style={textOnly}>
             Login
           </Button>
         </Segment>
       </Form>
-      <Message>
-        New to us? <a href='/register'>Sign Up</a>
+      <Message style={textOnly}>
+        New to us? <a href='/register' style={textOnly}>Sign Up</a>
       </Message>
       
     </Grid.Column>
@@ -96,5 +96,11 @@ const headers = {
   fontStyle: 'normal',
   fontWeight: 500,
   color: '#E03996'
+}
+
+const textOnly = {
+  fontFamily: 'minion-pro-italic, sans-serif',
+  fontStyle: 'normal',
+  fontWeight: 500
 }
 export default Login

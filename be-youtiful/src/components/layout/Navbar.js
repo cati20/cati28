@@ -25,10 +25,10 @@ const Navbar = () => {
           name='Register'
           
           >
-            <>Hello {" "} {client && client.name }</>
+            
             
                 <a onClick={onLogout} href="/">
-                    <FontAwesomeIcon icon={faSignOutAlt}/><span className="hide-sm">Logout</span>
+                <FontAwesomeIcon icon={faSignOutAlt}/><span className="hide-sm">Logout</span>
                 </a>
             
             </Menu.Item>

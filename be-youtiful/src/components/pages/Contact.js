@@ -17,6 +17,13 @@ const [query, setQuery] =useState({
 
 const {name, email, message, cellphone} = query;
 
+const clearForm = (e) => setQuery({
+  name:'',
+  email:'',
+  cellphone:'',
+  message: ''
+})
+
 const handleChange = (e) =>setQuery({...query, [e.target.name]: e.target.value});
 
 const sendQuery = async(e,q) =>{
@@ -24,6 +31,8 @@ e.preventDefault();
   try {
      await axios.post('/api/queries',q);
       setAlert('Your Query has be submitted', 'danger')
+      clearForm()
+      
   } catch (error) {
     console.log(error.message)
   }

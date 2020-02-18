@@ -25,7 +25,7 @@ const BookingItem = ({booking}) => {
     }
 
     return(
-        <Grid  style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid  style={{ height: '100vh' }} verticalAlign='middle' style={{backgroundColor:'teal'}}>
         <Grid.Column  mobile="16">
         <Segment raised size="large">
         <Card fluid>
@@ -47,7 +47,7 @@ const BookingItem = ({booking}) => {
         </Card.Content>
         <Card.Content extra>
           <Button.Group widths={2}>
-              <Button  color="#555" content="Edit" onClick={()=> setCurrent(booking)} />
+              <Button  color="grey" content="Edit" onClick={()=> setCurrent(booking)} />
               <Button  color="pink" content="Delete" onClick={onDelete} />
           </Button.Group>
         </Card.Content>

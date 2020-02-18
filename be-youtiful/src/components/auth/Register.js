@@ -88,13 +88,13 @@ const Register = (props) => {
             name="password2"
             onChange={onChange}
           />
-          <Button color='teal' fluid size='large' type="submit">
+          <Button color='teal' fluid size='large' type="submit" style={textOnly}>
             Sign-Up
           </Button>
         </Segment>
       </Form>
-      <Message>
-        Already have an account? <a href='/login'>Sign In</a>
+      <Message style={textOnly}>
+        Already have an account? <a href='/login' style={textOnly}>Sign In</a>
       </Message>
     </Grid.Column>
   </Grid>
@@ -106,6 +106,12 @@ const headers = {
   fontStyle: 'normal',
   fontWeight: 500,
   color: '#E03996'
+}
+
+const textOnly = {
+  fontFamily: 'minion-pro-italic, sans-serif',
+  fontStyle: 'normal',
+  fontWeight: 500
 }
 
 export default Register
