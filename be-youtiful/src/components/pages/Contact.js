@@ -41,7 +41,7 @@ e.preventDefault();
 
 
     return(
-    <Segment size="large" raised widths="equal">
+    <Segment size="large" raised widths="equal" style={{backgroundColor:'aqua'}}>
     <Grid verticalAlign='middle' Segment textAlign='center' stackable columns={2}>   
         <Grid.Column  > 
         <Card style={{marginTop:90}}>
@@ -68,7 +68,7 @@ e.preventDefault();
  <Grid.Column >      
 <Form fluid style={{marginTop:90}} onSubmit={(e) =>sendQuery(e,query)}>
 <Form.Group widths='equal' block>
-  <Form.Input fluid label='First name' name="name" value={name} placeholder='Full Name'onChange={handleChange}/>
+  <Form.Input fluid label='First name' name="name" value={name} placeholder='Full Name'onChange={handleChange} style={textOnly}/>
   <Form.Input fluid label='Email' name="email" value={email} placeholder='E-mail' onChange={handleChange} />
   <Form.Input fluid label='Cellphone' name="cellphone" value={cellphone} placeholder='Cellphone' onChange={handleChange} />
 
@@ -93,7 +93,7 @@ const headers = {
 
 const textOnly = {
   fontFamily: 'minion-pro-italic',
-  fontStyle: 'normal',
-  fontWeight: 500
+  fontStyle: 'bold',
+  fontWeight: 700
 }
 export default About

@@ -72,7 +72,7 @@ router.put('/:id',auth ,async (req, res) =>{
     if(surname) bookingFields.surname = surname;
     if(cellphone) bookingFields.cellphone = cellphone;
     if(appointment) bookingFields.appointment = appointment;
-    if(styling) bookingFields.style = styling;
+    if(styling) bookingFields.styling = styling;
     if(time) bookingFields.time = time
     if(colour) bookingFields.colour = colour
 

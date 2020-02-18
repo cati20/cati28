@@ -33,7 +33,7 @@ const BookingItem = ({booking}) => {
         <Card.Content>
           <Card.Header style={textOnly} >{booking.name}</Card.Header>
           <Card.Meta>
-            <span className='date' style={textOnly} > Date Joined: {" "}{booking.date.slice(0,10)}</span>
+            <span className='date' style={textOnly} > appointment created on: {" "}{booking.date.slice(0,10)}</span>
           </Card.Meta>
           <Card.Description>
           <Message floating style={textOnly} ><Icon name='user' />{name}{" "}{surname}</Message>

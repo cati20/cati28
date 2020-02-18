@@ -30,7 +30,7 @@ const Home = () =>{
     <Header style={{marginLeft:0}}>
     <Card >
     <Image src='' wrapped ui={true} />
-    <Card.Content style={{backgroundColor:"grey"}}>
+    <Card.Content style={{backgroundColor:"grey", opacity:50}}>
       <Card.Header style={textOnly}>Price: R120</Card.Header>
       <Card.Description>
         <p style={textOnly}>Gel</p>
