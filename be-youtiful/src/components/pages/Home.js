@@ -79,7 +79,11 @@ const Home = () =>{
   </Card>
             
           </Header>
-          <Button  style={textOnly} style={{backgroundColor:"#FB3A75", textAlign:"center"}} >Book Now</Button>
+          <Button 
+           style={textOnly} 
+           style={{backgroundColor:"#FB3A75",textAlign:"center"}}
+          
+            >Book Now</Button>
         </Grid.Column>
       </Grid.Row>
     </Grid>

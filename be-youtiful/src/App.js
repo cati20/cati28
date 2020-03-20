@@ -61,6 +61,10 @@ const App = () => {
           <Link to="/">Home</Link>
         </Menu.Item>
         <Menu.Item >
+          <Icon name='camera retro' />
+          <Link to="/gallery">Gallery </Link>
+        </Menu.Item>
+        <Menu.Item >
           <Icon name='sign-in' />
           <Link to="/login">Sign In </Link>
         </Menu.Item>
